@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Barcode for Code</title>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 100%;
+            margin: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2em;
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 5px;
+            font-size: 18px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .barcode-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* Simple CSS Logo */
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #4CAF50;
+            letter-spacing: 2px;
+            margin-top: 20px;
+            text-transform: uppercase;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            text-align: center;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Responsive design for phones */
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            .form-group input, .form-group button {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- CSS Logo with Your Name -->
+        <div class="logo">ISMAIL ARRAF</div>
+
+        <h1>Generate Barcode for Code</h1>
+
+        <div class="form-group">
+            <label for="referenceInput">Enter Code:</label>
+            <input type="text" id="referenceInput" placeholder="Enter the code you need">
+        </div>
+
+        <button onclick="generateBarcode()">Generate Barcode</button>
+
+        <div class="barcode-container">
+            <h3>Generated Barcode:</h3>
+            <svg id="barcode"></svg>
+        </div>
+    </div>
+
+    <footer>
+        <p>Created by Arraf</p>
+    </footer>
+
+    <script>
+        function generateBarcode() {
+            const reference = document.getElementById("referenceInput").value.trim();
+            if (!reference) {
+                alert("Please enter a code!");
+                return;
+            }
+            JsBarcode("#barcode", reference, {
+                format: "CODE128",
+                lineColor: "#000",
+                width: 2,
+                height: 50,
+                displayValue: true,
+            });
+        }
+    </script>
+</body>
+</html>
